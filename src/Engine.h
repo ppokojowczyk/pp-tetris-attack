@@ -33,10 +33,13 @@ public:
     }
     void rearrangeBlocks();
     void clearBlocks(); // This should clear sets of blocks.
+    std::string getFormattedScore();
+
 private:
     std::string test1;
     std::vector<sf::Sprite> sprites;
     std::vector<sf::Sprite>::iterator spi;
+    Text *scoreLabel;
     Text *scoreText;
     Text *title;
 };

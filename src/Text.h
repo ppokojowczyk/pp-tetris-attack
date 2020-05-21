@@ -34,6 +34,7 @@ public:
     int xpos;
     int ypos;
     std::string txt;
+    void setText(std::string txt);
     static Text createText(std::string txt, int xpos, int ypos, int fontSize);
     Text(Engine *a) : engine(a) {}
     void prepareSprites();

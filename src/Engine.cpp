@@ -80,9 +80,10 @@ int Engine::run()
     sf::Sprite bgSprite = sf::Sprite(textures[7]);
     prepareElements();
     Controls controls(this);
-    Text *title = createText(this, "pp tetris attack", 200, 10, 28);
-    Text *scoreText = createText(this, "score", 30, 50, 32);
-    Text *copy = createText(this, "c pokojowczyk pl", 600, 575, 16);
+    Text *title = createText(this, "pp-tetris-attack", 200, 10, 28);
+    Text *scoreLabel = createText(this, "score", 30, 50, 32);
+    Text *scoreText = createText(this, "000000", 30, 80, 32);
+    Text *copy = createText(this, "pokojowczyk.pl 2020", 560, 575, 16);
 
     // Loop
     while (win.isOpen())
@@ -97,11 +98,13 @@ int Engine::run()
                 win.close();
             }
         }
+        scoreText->setText(getFormattedScore());
         //handleKeys();
         win.clear();
         win.draw(bgSprite);
         title->draw();
         scoreText->draw();
+        scoreLabel->draw();
         copy->draw();
         rectangle->renderRectangle();
         drawElements();
@@ -214,4 +217,14 @@ void Engine::rearrangeBlocks()
             }
         }
     };
+}
+
+std::string Engine::getFormattedScore()
+{
+    std::string scr = std::to_string(score);
+    while (scr.length() < 6)
+    {
+        scr = "0" + scr;
+    }
+    return scr;
 }

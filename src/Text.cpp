@@ -35,7 +35,20 @@ std::map<char, letter> Text::lettersMap = {
     {'w', letter{6, 2}},
     {'x', letter{7, 2}},
     {'y', letter{0, 3}},
-    {'z', letter{1, 3}}};
+    {'z', letter{1, 3}},
+    {'-', letter{2, 3}},
+    {'0', letter{3, 3}},
+    {'1', letter{4, 3}},
+    {'2', letter{5, 3}},
+    {'3', letter{6, 3}},
+    {'4', letter{7, 3}},
+    {'5', letter{0, 4}},
+    {'6', letter{1, 4}},
+    {'7', letter{2, 4}},
+    {'8', letter{3, 4}},
+    {'9', letter{4, 4}},
+    {'.', letter{5, 4}},
+    {',', letter{6, 4}}};
 
 void Text::setFontSize(int size)
 {
@@ -60,9 +73,7 @@ Text *createText(Engine *engine, std::string txt, int xpos, int ypos, int fontSi
     }
     text->xpos = xpos;
     text->ypos = ypos;
-    text->txt = txt;
-    text->textLength = 0;
-    text->prepareSprites();
+    text->setText(txt);
     return text;
 }
 
@@ -107,4 +118,11 @@ void Text::draw()
     {
         engine->win.draw(sprites[i]);
     }
+}
+
+void Text::setText(std::string txt)
+{
+    this->txt = txt;
+    this->textLength = 0;
+    this->prepareSprites();
 }
