@@ -33,7 +33,7 @@ class Block {
 
 	void setType(int _type){
 	    type = _type;
-            sprite.setTexture(engine->textures[_type + 1]);
+		sprite.setTexture(engine->textures[_type + 1]);
 	}
 
 	int getType(){
