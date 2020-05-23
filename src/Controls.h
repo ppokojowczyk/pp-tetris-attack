@@ -2,15 +2,15 @@
 #include <cstdio>
 #include <vector>
 
-class Engine;
 class Rect;
 
-class Controls {
+class Controls
+{
+public:
+    Controls(Game *a) : game(a) {}
+    void handleEvent(sf::Event *event);
+    bool isKeyCodeValid(int kc);
 
-    public:
-        Controls(Engine* a): engine(a) {}
-        void handleEvent(sf::Event* event);
-        bool isKeyCodeValid(int kc);
-    protected:
-        Engine* engine;
+protected:
+    Game *game;
 };

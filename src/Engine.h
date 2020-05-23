@@ -3,6 +3,9 @@
 #include <vector>
 #include <string>
 
+#define MENU_STATE 1
+#define GAME_STATE 2
+
 class Rect;
 class Block;
 class Text;
@@ -10,36 +13,16 @@ class Text;
 class Engine
 {
 public:
-    Engine(sf::RenderWindow &a) : win(a) {}
-    bool renderBlocks();
-    bool createBlocks(); // this should create blocks objects and put them into blocksMatrix
-    void handleKeys();
-    bool renderSprites();
-    int run();
-    Block *blocksMatrix[10][15];
-    void setWindow(sf::RenderWindow *w);
-    void replaceBlocks();
-    Rect *rectangle;
     sf::Texture *textures;
+    Engine(sf::RenderWindow &a) : win(a) {}
+    int run();
+    void setWindow(sf::RenderWindow *w);
     sf::RenderWindow &win;
     void log(std::string txt);
-    void prepareElements();
-    void drawElements();
-    int score;
     void handleEvent(sf::Event *event, Engine *engine);
-    void addScore(int points)
-    {
-        score += points;
-    }
-    void rearrangeBlocks();
-    void clearBlocks(); // This should clear sets of blocks.
-    std::string getFormattedScore();
+    void setState(int val);
+    int getState();
 
 private:
-    std::string test1;
-    std::vector<sf::Sprite> sprites;
-    std::vector<sf::Sprite>::iterator spi;
-    Text *scoreLabel;
-    Text *scoreText;
-    Text *title;
+    int state = 0;
 };

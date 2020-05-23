@@ -41,4 +41,5 @@ public:
     sf::Sprite prepareLetter(char letter, int index);
     void draw();
     float getOffset();
+    void setColor(sf::Color color);
 };

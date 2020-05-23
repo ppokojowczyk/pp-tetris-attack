@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "Text.h"
 
 /**
  * @todo Can this be moved into Text class?
@@ -125,4 +124,12 @@ void Text::setText(std::string txt)
     this->txt = txt;
     this->textLength = 0;
     this->prepareSprites();
+}
+
+void Text::setColor(sf::Color color)
+{
+    for (int i = 0; i < textLength; i++)
+    {
+        sprites[i].setColor(color);
+    }
 }
