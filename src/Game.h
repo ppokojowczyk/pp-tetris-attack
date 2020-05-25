@@ -4,6 +4,7 @@ class Engine;
 class Block;
 class Rect;
 class Text;
+class Controls;
 
 class Game
 {
@@ -34,7 +35,9 @@ public:
     void endGame();
     void loop();
     Engine *engine;
-    int state = 1;
+    int state = 0;
+    Controls *controls;
+    sf::Sprite bgSprite;
 
 protected:
     std::vector<sf::Sprite> sprites;

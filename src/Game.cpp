@@ -11,28 +11,30 @@ Game::Game(Engine *engine)
     this->engine = engine;
 }
 
+/**
+ * Initialize new game.
+ */
 void Game::newGame()
 {
+    std::vector<sf::Sprite *> sprites;
+    this->scoreLabel = createText(engine, "score", 30, 50, 32);
+    this->scoreText = createText(engine, "000000", 30, 80, 32);
+    this->title = createText(engine, "pp-tetris-attack", 200, 10, 28);
+    this->controls = new Controls(this);
+    this->state = 1;
+    this->rectangle = new Rect(engine->win);
+    this->rectangle->brdxpos = 0;
+    createBlocks();
+    vector<sf::Sprite *>::iterator spi;
+    score = 0;
+    this->bgSprite = sf::Sprite(engine->textures[7]);
 }
 
 void Game::loop()
 {
-    std::vector<sf::Sprite *> sprites;
-    Text *scoreLabel = createText(engine, "score", 30, 50, 32);
-    Text *scoreText = createText(engine, "000000", 30, 80, 32);
-    prepareElements();
-    Controls controls(this);
-    Text *title = createText(engine, "pp-tetris-attack", 200, 10, 28);
-    Rect rect(engine->win);
-    rect.brdxpos = 0;
-    rectangle = &rect;
-    createBlocks();
-    vector<sf::Sprite *>::iterator spi;
-    score = 0;
-    sf::Sprite bgSprite = sf::Sprite(engine->textures[7]);
-
+    this->state = 1;
     // Loop
-    while (state == 1)
+    while (this->state == 1)
     {
         sf::Event event;
         engine->win.clear();
@@ -40,7 +42,7 @@ void Game::loop()
         Text *copy = createText(engine, "pokojowczyk.pl 2020", 560, 575, 16);
         while (engine->win.pollEvent(event))
         {
-            controls.handleEvent(&event);
+            this->controls->handleEvent(&event);
             if (event.type == sf::Event::Closed)
             {
                 engine->win.close();
@@ -62,6 +64,7 @@ void Game::loop()
 void Game::endGame()
 {
     state = 0;
+    this->engine->menu->updateItems();
 }
 
 std::string Game::getFormattedScore()

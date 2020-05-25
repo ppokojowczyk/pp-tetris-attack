@@ -113,6 +113,10 @@ void *Text::initTextures()
 
 void Text::draw()
 {
+    if (!this->getVisible())
+    {
+        return;
+    }
     for (int i = 0; i < textLength; i++)
     {
         engine->win.draw(sprites[i]);
@@ -131,5 +135,25 @@ void Text::setColor(sf::Color color)
     for (int i = 0; i < textLength; i++)
     {
         sprites[i].setColor(color);
+    }
+}
+
+void Text::setVisible(bool visible)
+{
+    this->visible = visible;
+}
+
+bool Text::getVisible()
+{
+    return this->visible;
+}
+
+bool Text::setPosition(int x, int y)
+{
+    xpos = x;
+    ypos = y;
+    for (int i = 0; i < textLength; i++)
+    {
+        sprites[i].setPosition(xpos + (getOffset() * i), ypos);
     }
 }

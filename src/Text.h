@@ -20,6 +20,7 @@ class Text
 protected:
     Engine *engine;
     int fontSize;
+    bool visible = true;
 
 public:
     static sf::Texture *texture;
@@ -42,4 +43,7 @@ public:
     void draw();
     float getOffset();
     void setColor(sf::Color color);
+    void setVisible(bool visible);
+    bool getVisible();
+    bool setPosition(int x, int y);
 };
