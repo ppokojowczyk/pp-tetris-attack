@@ -1,76 +1,44 @@
 #include <SFML/Graphics.hpp>
-#include <cstdio>
-#include <vector>
 
+/**
+ * Handle key event.
+ * @param sf::Event *event
+ * @return void
+ */
 void Controls::handleEvent(sf::Event *event)
 {
 
     int kc = event->key.code;
-    bool valid = isKeyCodeValid(kc);
 
-    if (kc == sf::Keyboard::Escape || kc == sf::Keyboard::Q)
+    /* Open in-game menu. */
+    if (kc == sf::Keyboard::Escape)
     {
-        game->endGame();        
+        game->endGame();
     }
 
     if (event->type == sf::Event::KeyPressed)
     {
-
-        // check if key is a valid key for movement
-        if (valid)
+        /* Replace blocks when space is pressed. */
+        if (kc == sf::Keyboard::Space)
         {
-            //if(mvblk == true){return;}
-
-            // replace blocks when space is pressed
-            if (kc == sf::Keyboard::Space)
-            {
-                game->replaceBlocks();
-            }
-
-            // catch arrows keys
-            if (kc == sf::Keyboard::Down || kc == sf::Keyboard::J)
-            {
-                game->rectangle->moveDown();
-            }
-            if (kc == sf::Keyboard::Up || kc == sf::Keyboard::K)
-            {
-                game->rectangle->moveUp();
-            }
-            if (kc == sf::Keyboard::Left || kc == sf::Keyboard::H)
-            {
-                game->rectangle->moveLeft();
-            }
-            if (kc == sf::Keyboard::Right || kc == sf::Keyboard::L)
-            {
-                game->rectangle->moveRight();
-            }
-
-            //mvblk = true; // block the movement when key is hold
+            game->replaceBlocks();
+        }
+        /* Catch arrow keys. */
+        if (kc == sf::Keyboard::Down)
+        {
+            game->rectangle->moveDown();
+        }
+        if (kc == sf::Keyboard::Up)
+        {
+            game->rectangle->moveUp();
+        }
+        if (kc == sf::Keyboard::Left)
+        {
+            game->rectangle->moveLeft();
+        }
+        if (kc == sf::Keyboard::Right)
+        {
+            game->rectangle->moveRight();
         }
     }
-
-    // unblock movement when arrow hey is released
-    //if(event->type == sf::Event::KeyReleased && valid) { mvblk = false; }
-}
-
-bool Controls::isKeyCodeValid(int kc)
-{
-    sf::Keyboard::Key validKeys[] = {
-        sf::Keyboard::Up,
-        sf::Keyboard::Right,
-        sf::Keyboard::Down,
-        sf::Keyboard::Left,
-        sf::Keyboard::K,
-        sf::Keyboard::L,
-        sf::Keyboard::J,
-        sf::Keyboard::H,
-        sf::Keyboard::Space};
-    for (int i = 0; i < sizeof(validKeys); i++)
-    {
-        if (validKeys[i] == kc)
-        {
-            return true;
-        }
-    }
-    return false;
 }

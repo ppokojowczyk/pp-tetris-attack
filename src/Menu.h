@@ -25,5 +25,4 @@ public:
 
 protected:
     int currentItemIndex;
-    // sf::Color SELECTED_COLOR;
 };

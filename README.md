@@ -16,5 +16,5 @@ If required libs are present code should compile after executing ./compile-and-r
 
 ## Screenshot
 
-![pp-tetris-attack screenshot](assets/screenshot.png)
+![pp-tetris-attack screenshot](assets/screenshot.jpg)
 
