@@ -24,7 +24,7 @@ protected:
 
 public:
     static sf::Texture *texture;
-    static void *initTextures();
+    static void initTextures();
     static std::map<char, letter> lettersMap;
     int textLength;
     void setFontSize(int size);
@@ -45,5 +45,5 @@ public:
     void setColor(sf::Color color);
     void setVisible(bool visible);
     bool getVisible();
-    bool setPosition(int x, int y);
+    void setPosition(int x, int y);
 };

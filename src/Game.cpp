@@ -174,7 +174,7 @@ void Game::replaceBlocks()
 /**
  * Render all blocks from blocksMatrix.
  */
-bool Game::renderBlocks()
+void Game::renderBlocks()
 {
     for (int y = 0; y < 15; y++)
     {
@@ -194,12 +194,12 @@ bool Game::renderBlocks()
  * __TODO__
  * (!) Should be used for extended animations.
  */
-bool Game::renderSprites() {}
+void Game::renderSprites() {}
 
 /**
  * This should create all blocks and put them into blocksMatrix (board).
  */
-bool Game::createBlocks()
+void Game::createBlocks()
 {
     srand(time(NULL)); // to get different sequence when rand() is executed
     for (int x = 0; x < 10; x++)

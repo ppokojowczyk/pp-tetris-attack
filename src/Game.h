@@ -11,10 +11,10 @@ class Game
 public:
     Game(Engine *engine);
     // Game(Engine *a) : engine(a) {}
-    bool renderBlocks();
-    bool createBlocks(); // this should create blocks objects and put them into blocksMatrix
+    void renderBlocks();
+    void createBlocks(); // this should create blocks objects and put them into blocksMatrix
     void handleKeys();
-    bool renderSprites();
+    void renderSprites();
     Block *blocksMatrix[10][15];
     void replaceBlocks();
     void setWindow(sf::RenderWindow *w);

@@ -105,7 +105,7 @@ float Text::getOffset()
     return getFontSize() * OFFSET_FACTOR;
 }
 
-void *Text::initTextures()
+void Text::initTextures()
 {
     texture->loadFromFile("sprites/font.png");
     texture->setSmooth(true);
@@ -148,7 +148,7 @@ bool Text::getVisible()
     return this->visible;
 }
 
-bool Text::setPosition(int x, int y)
+void Text::setPosition(int x, int y)
 {
     xpos = x;
     ypos = y;
